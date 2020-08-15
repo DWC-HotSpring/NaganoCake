@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_15_092459) do
+ActiveRecord::Schema.define(version: 2020_08_15_120406) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -24,9 +24,42 @@ ActiveRecord::Schema.define(version: 2020_08_15_092459) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "cart_items", force: :cascade do |t|
+    t.integer "customer_id"
+    t.integer "product_id"
+    t.integer "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "genres", force: :cascade do |t|
     t.string "name"
     t.boolean "is_valied", default: true, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "order_products", force: :cascade do |t|
+    t.integer "product_id"
+    t.integer "order_id"
+    t.integer "make_status", default: 0
+    t.integer "quantity"
+    t.integer "purchase_price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "customer_id"
+    t.integer "order_status", default: 0
+    t.string "addressee"
+    t.string "post_code"
+    t.integer "prefecture_code"
+    t.string "city"
+    t.string "block"
+    t.integer "postage", default: 800
+    t.integer "billing_amount"
+    t.integer "payment_method", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
