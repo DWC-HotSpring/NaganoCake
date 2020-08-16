@@ -283,7 +283,7 @@ DEPENDENCIES
   rails (~> 5.2.4, >= 5.2.4.3)
   refile!
   refile-mini_magick
-  sass-rails (~> 5.0)
+  sass-rails
   selenium-webdriver
   spring
   spring-watcher-listen (~> 2.0.0)
